@@ -1,0 +1,100 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  display: flex; flex-direction: column;
+  font: 12px/1.5 -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #1e1e1e; color: #d4d4d4;
+}
+
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 10px; background: #252526; border-bottom: 1px solid #333; gap: 12px;
+}
+.left, .right { display: flex; align-items: center; gap: 10px; }
+.badge { padding: 2px 8px; border-radius: 10px; font-size: 11px; }
+.badge--idle { background: #3c3c3c; color: #888; }
+.badge--ok { background: #2d5a2d; color: #9bd89b; }
+.badge--err { background: #5a2d2d; color: #d89b9b; }
+.meta { color: #888; }
+.detail-empty { color: #666; padding: 20px; text-align: center; }
+
+input[type="search"] { flex: 1; padding: 3px 6px; background: #2d2d2d; color: #ddd; border: 1px solid #3c3c3c; border-radius: 3px; }
+select, button { padding: 3px 8px; background: #2d2d2d; color: #ddd; border: 1px solid #3c3c3c; border-radius: 3px; cursor: pointer; }
+button:hover { background: #3c3c3c; }
+.check { display: flex; align-items: center; gap: 4px; }
+
+nav.tabs {
+  display: flex; background: #252526; border-bottom: 1px solid #333;
+  padding: 0 6px; gap: 2px;
+}
+.tab {
+  background: transparent; border: none; border-bottom: 2px solid transparent;
+  color: #aaa; padding: 6px 14px; cursor: pointer; font-size: 12px; border-radius: 0;
+}
+.tab:hover { color: #ddd; }
+.tab--active { color: #fff; border-bottom-color: #4ec9b0; }
+
+.tab-panel { display: none; flex: 1; overflow: hidden; min-height: 0; }
+.tab-panel--active { display: flex; flex-direction: column; }
+main { flex: 1; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+
+.store-toolbar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 10px; background: #252526; border-bottom: 1px solid #333;
+  flex-shrink: 0;
+}
+.store-toolbar input[type="search"] { flex: 1; }
+.match-count { color: #888; font-size: 11px; white-space: nowrap; }
+.store-content { flex: 1; display: flex; overflow: hidden; min-height: 0; }
+
+.table-wrap { flex: 1; overflow: auto; position: relative; min-height: 0; }
+aside#detail, #entities-detail {
+  width: 38%; min-width: 240px; max-width: 600px;
+  overflow: auto; border-left: 1px solid #333; background: #1a1a1a;
+  padding: 8px 10px; min-height: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid #2a2a2a; vertical-align: top; }
+th { background: #2d2d2d; color: #aaa; font-weight: 600; position: sticky; top: 0; z-index: 1; }
+.col-id { width: 90%; }
+.col-diff { width: 10%; }
+#entities-table .col-id { width: 45%; }
+#entities-table th:nth-child(2), #entities-table th:nth-child(3), #entities-table th:nth-child(4) { width: 18%; }
+#systems-table th:first-child { width: 30%; }
+#systems-table th:nth-child(2), #systems-table th:nth-child(3), #systems-table th:nth-child(4) { width: 10%; }
+#systems-table th:last-child { width: 32%; }
+.comma-list { color: #9cdcfe; }
+.tag-yes { color: #9bd89b; }
+.tag-no { color: #666; }
+#renderer-view { padding: 10px; margin: 0; flex: 1; overflow: auto; min-height: 0; }
+#renderer-empty { flex: 1; min-height: 0; }
+#scenes-table th:first-child { width: 60%; }
+#scenes-table th:nth-child(2) { width: 20%; }
+#scenes-table th:nth-child(3) { width: 20%; }
+tr.scene-active { background: #2d5a2d; color: #9bd89b; }
+tr.scene-active td:first-child::before { content: "● "; color: #9bd89b; }
+tr { cursor: pointer; }
+tr:hover { background: #2a2d2e; }
+tr.selected { background: #37373d; }
+tr.changed td.col-diff { color: #f0c674; font-weight: 600; }
+tr.added { background: #2d3a1f; }
+tr.removed { background: #3a1f1f; color: #999; text-decoration: line-through; }
+
+.json-view {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #d4d4d4;
+}
+.json-error { color: #f48771; }
+.j-key { color: #9cdcfe; }
+.j-str { color: #ce9178; }
+.j-num { color: #b5cea8; }
+.j-bool { color: #569cd6; }
+.j-null { color: #569cd6; font-style: italic; }
+.empty { color: #666; padding: 20px; text-align: center; }

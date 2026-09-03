@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>PtahJs DevTools</title>
+  <link rel="stylesheet" href="panel.css" />
+</head>
+
+<body>
+  <header>
+    <div class="left">
+      <span id="status" class="badge badge--idle">未连接</span>
+      <span id="size" class="meta">store size: -</span>
+      <span id="latency" class="meta">- ms</span>
+      <span id="page-url" class="meta"></span>
+    </div>
+    <div class="right">
+      <label class="check"><input type="checkbox" id="auto" checked /> 自动刷新</label>
+      <select id="interval">
+        <option value="200">200ms</option>
+        <option value="500" selected>500ms</option>
+        <option value="1000">1s</option>
+        <option value="2000">2s</option>
+      </select>
+      <button id="refresh">立即刷新</button>
+    </div>
+  </header>
+  <nav class="tabs">
+    <button class="tab tab--active" data-tab="scenes">Scenes</button>
+    <button class="tab" data-tab="store">Store</button>
+    <button class="tab" data-tab="entities">Entities</button>
+    <button class="tab" data-tab="systems">Systems</button>
+    <button class="tab" data-tab="renderer">Renderer</button>
+  </nav>
+  <main>
+    <section class="tab-panel tab-panel--active" data-panel="scenes">
+      <div class="table-wrap">
+        <table id="scenes-table">
+          <thead>
+            <tr>
+              <th>Scene</th>
+              <th>实体数</th>
+              <th>状态</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="scenes-empty" class="empty">等待 ECS 快照...</div>
+      </div>
+    </section>
+    <section class="tab-panel " data-panel="store">
+      <div class="store-toolbar">
+        <input type="search" id="filter" placeholder="搜索 id 或数据值..." autocomplete="off" />
+        <span id="match-count" class="match-count"></span>
+      </div>
+      <div class="store-content">
+        <section class="table-wrap">
+          <table id="table">
+            <thead>
+              <tr>
+                <th class="col-id">ID</th>
+                <th class="col-diff">变更</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div id="empty" class="empty">等待快照...</div>
+        </section>
+        <aside id="detail">
+          <div class="detail-empty">点击左侧某行查看完整数据</div>
+        </aside>
+      </div>
+    </section>
+    <section class="tab-panel" data-panel="entities">
+      <div class="store-toolbar">
+        <input type="search" id="entities-filter" placeholder="按 id / 组件 / 场景过滤..." autocomplete="off" />
+        <span id="entities-count" class="match-count"></span>
+      </div>
+      <div class="store-content">
+        <section class="table-wrap">
+          <table id="entities-table">
+            <thead>
+              <tr>
+                <th class="col-id">Entity ID</th>
+                <th>场景</th>
+                <th>组件</th>
+                <th>系统</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div id="entities-empty" class="empty">等待 ECS 快照...</div>
+        </section>
+        <aside id="entities-detail">
+          <div class="detail-empty">点击左侧某行查看完整组件数据</div>
+        </aside>
+      </div>
+    </section>
+    <section class="tab-panel" data-panel="systems">
+      <div class="table-wrap">
+        <table id="systems-table">
+          <thead>
+            <tr>
+              <th>System</th>
+              <th>匹配实体</th>
+              <th>updateScene</th>
+              <th>updateEntity</th>
+              <th>requiredComponents</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="systems-empty" class="empty">等待 ECS 快照...</div>
+      </div>
+    </section>
+    <section class="tab-panel" data-panel="renderer">
+      <div id="renderer-empty" class="empty">等待 renderer 快照...</div>
+      <pre id="renderer-view" class="json-view" style="display:none"></pre>
+    </section>
+  </main>
+  <script src="panel.js"></script>
+</body>
+
+</html>

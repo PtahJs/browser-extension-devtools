@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "PtahJs DevTools",
+    "version": "1.0.0",
+    "description": "Inspect @ptahjs/tri engine.store (Map) in real time from a dedicated DevTools panel. For tri engine developers.",
+    "homepage_url": "https://github.com/PtahJs/browser-extension-devtools",
+    "author": "Bobby",
+    "license": "MIT",
+    "devtools_page": "devtools.html",
+    "action": {
+        "default_title": "PtahJs DevTools",
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icon-16.png",
+            "48": "icon-48.png",
+            "128": "icon-128.png"
+        }
+    },
+    "icons": {
+        "16": "icon-16.png",
+        "48": "icon-48.png",
+        "128": "icon-128.png"
+    },
+    "permissions": ["storage"],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "ptahjs-devtools@ptahjs.com",
+            "strict_min_version": "142.0",
+            "data_collection_permissions": {
+                "required": ["none"]
+            }
+        }
+    }
+}
