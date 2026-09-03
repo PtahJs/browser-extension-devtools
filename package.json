@@ -1,0 +1,18 @@
+{
+    "name": "@ptahjs/tri-devtools",
+    "version": "1.0.0",
+    "private": false,
+    "description": "Inspect @ptahjs/tri in real time: scenes, store, entities, systems, and renderer config. For tri engine developers.",
+    "type": "module",
+    "scripts": {
+        "zip": "node -e \"const {execSync} = require('child_process'); const fs = require('fs'); const v = require('./package.json').version; fs.mkdirSync('dist', {recursive: true}); execSync(`bestzip ../../dist/ptahjs-devtools-v${v}.zip *`, {stdio: 'inherit', cwd: 'src/browser-extension'})\"",
+        "sign": "dotenv -e .env -- web-ext sign --source-dir src/browser-extension --artifacts-dir dist --channel unlisted",
+        "sign:listed": "dotenv -e .env -- web-ext sign --source-dir src/browser-extension --artifacts-dir dist --channel listed --amo-metadata amo-metadata.json",
+        "lint": "web-ext lint --source-dir src/browser-extension"
+    },
+    "devDependencies": {
+        "bestzip": "3.0.3",
+        "dotenv-cli": "11.0.0",
+        "web-ext": "10.6.0"
+    }
+}

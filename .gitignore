@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+old
+node_modules
+dist
+dist-ssr
+build
+*.local
+cache
+ws-records
+# env
+.env
+.env.*
+!.env.example
+
+# build artifacts
+# runner 模板产物：也让 tailwind 不要把它当源文件扫描
+apps/ptah-vapor/public/runner-template
+*.tsbuildinfo
+.turbo
+.eslintcache
+*.tgz
+
+
+# Editor directories and files
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+coverage
+.gitignorefile
